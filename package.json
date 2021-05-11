@@ -1,0 +1,28 @@
+{
+  "name": "poc",
+  "version": "1.0.0",
+  "description": "POC_tests",
+  "main": "index.js",
+  "scripts": {
+    "cypress": "cypress open",
+    "test": "cypress run --config video=false"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aleksandrromaniy/POC.git"
+  },
+  "author": "Aleksandr Romaniy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Aleksandrromaniy/POC/issues"
+  },
+  "homepage": "https://github.com/Aleksandrromaniy/POC#readme",
+  "dependencies": {
+    "cypress": "^7.3.0",
+    "cypress-mochawesome-reporter": "^2.0.1"
+  },
+  "devDependencies": {
+    "cypress": "^7.3.0",
+    "cypress-mochawesome-reporter": "^2.0.1"
+  }
+}
