@@ -10,18 +10,17 @@ class HomePage {
     }
 
     get loginButton() {
-
-        return get('tr[id=login_submit_field]')
+        return get('tr[id=login_submit_field]').click();
     }
 
-    openLoginPage(url) {
+    open(url) {
         visit(url);
     }
 
     login(user, password) {
-        this.userNameField.type(user)
+        this.userNameField.type(user);
         this.userPasswordField.type(password);
-        this.loginButton.click();
+        this.loginButton;
     }
 }
 

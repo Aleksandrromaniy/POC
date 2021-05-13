@@ -3,19 +3,21 @@ const {get} = cy;
 class TasksPage {
 
     get optionsButton() {
-        return get('div[id="easy-query-toggle-button-settings"]').find('i[class="icon-toggler"]');
+        return get('#easy-query-toggle-button-settings > a')
+            .click({force: true});
     }
 
     get applyOptionsSettingsButton() {
-        return get('#filter_buttons > .icon-checked');
+        return get('#filter_buttons > .icon-checked')
+            .click({force: true});
     }
 
     get priorityColumnHeader() {
-        return get('.affix-cell-wrap > .sort');
+        return get('.priority > .affix-cell-wrap');
     }
 
     get filterButton() {
-        return get('#easy-query-toggle-button-filters > a');
+        return get('#easy-query-toggle-button-filters').click({force: true});
     }
 
     get groupedValueBlock() {
@@ -23,13 +25,14 @@ class TasksPage {
     }
 
     selectValueFromPriorityDropdown(value) {
-        get('.span_values_priority_id > .easy-multiselect-tag-container > .easy-autocomplete-tag > .ui-button')
+        get('#priority_id')
             .click({force: true});
-        get('ul[id="ui-id-40"]').find('li[class="ui-menu-item"]').contains(value).click({force: true});
+        get('#ui-id-40').find('.ui-menu-item').contains(value)
+            .click({force: true});
     }
 
     deleteFromSelectedPriorityValue(value) {
-        get('div[id="div_values_priority_id"]')
+        get('#div_values_priority_id')
             .find('span')
             .contains(value)
             .find('span[class="icon icon-del"]')
@@ -37,26 +40,25 @@ class TasksPage {
     }
 
     setPriorityFilter() {
-        get('[id="add_filter_select"] > optgroup')
+        get('#add_filter_select > optgroup')
             .find('option[value="priority_id"]').eq(0)
-            .then($els => $els.get(0).setAttribute('selected', "selected"))
+            .then($el => $el.get(0).setAttribute('selected', "selected"))
             .parent()
             .trigger('change', {force: true});
     }
 
     selectColumn(columnName) {
-        get('[id="available_columns"]').select(columnName);
-        get('[id="modal_selector_move_column_right_button"').click({force: true});
+        get('#available_columns').select(columnName);
+        get('#modal_selector_move_column_right_button').click({force: true});
     }
 
     checkPriorityColumnValue(value) {
         get('table[class="list easy-entity-list entities issues sort-by-priority sort-desc list--with_totalrow table-resizer context-menu-container"]')
             .find('tbody')
             .find('tr[id^="entity-"]')
-            .each((elm) => {
-                expect(elm
-                    .find('td[class="easy-entity-list__item-attribute priority"]')
-                    .find('span[class="multieditable editable multieditable-initialized"]')
+            .each((el) => {
+                expect(el
+                    .find('.priority > .easy-entity-list__item-attribute-content > .multieditable-parent > .multieditable')
                     .text()
                     .trim()).equal(value)
             });

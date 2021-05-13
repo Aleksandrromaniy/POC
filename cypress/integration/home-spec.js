@@ -3,7 +3,7 @@ import variables from "../../variables.json";
 
 context("Home page tests", () => {
     beforeEach(() => {
-        homePage.openLoginPage(variables.URL);
+        homePage.open(variables.URL);
     })
     it("Login Page is displayed", () => {
         cy.location().should((loc) => {

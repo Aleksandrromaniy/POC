@@ -1,0 +1,7 @@
+{
+  "priorityColumnHeader":           "Priority",
+  "addColumn":                      "priority",
+  "filterValue":                    "High",
+  "groupBy":                        "Assignee",
+  "filterBy":                       "Priority"
+}

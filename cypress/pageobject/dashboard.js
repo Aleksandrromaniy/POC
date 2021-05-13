@@ -3,11 +3,11 @@ const {get} = cy;
 class Dashboard {
 
     get tasksButton() {
-        return get("a[title='Tasks']").last();
+        return get('.menu-manager > :nth-child(3) > .issues').last().click();
     }
 
     get dynamicFilterButton() {
-        return get('a[id="tab_4"]');
+        return get('#tab_4').click({force: true});
     }
 
 }
